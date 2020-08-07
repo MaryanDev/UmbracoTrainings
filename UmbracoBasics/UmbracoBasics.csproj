@@ -2177,6 +2177,8 @@
     <Content Include="Views\master.cshtml" />
     <Content Include="Views\ContentPage.cshtml" />
     <Content Include="Views\ContactPage.cshtml" />
+    <Content Include="Views\Blog.cshtml" />
+    <Content Include="Views\BlogItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -6,10 +6,11 @@
 
 <div class="container">
 
-    <div class="row section">
+    @*<div class="row section">
         <div class="col-md-12">
            @Model.Value("bodyText")
         </div>
-    </div>
+    </div>*@
+    @Html.GetGridHtml(Model, "grid")
 
 </div>
