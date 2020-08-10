@@ -272,6 +272,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.html" />
+    <Content Include="App_Plugins\MarkDownEditor\lib\Markdown.Converter.js" />
+    <Content Include="App_Plugins\MarkDownEditor\lib\Markdown.Editor.js" />
+    <Content Include="App_Plugins\MarkDownEditor\lib\Markdown.Sanitizer.js" />
+    <Content Include="App_Plugins\MarkDownEditor\markdowneditor.controller.js" />
+    <Content Include="App_Plugins\MarkDownEditor\markdowneditor.html" />
     <Content Include="App_Plugins\uSync8\backoffice\uSync8\dashboard.html" />
     <Content Include="App_Plugins\uSync8\backoffice\uSync8\uSyncDashboardController.js" />
     <Content Include="App_Plugins\uSync8\changeDialog.html" />
@@ -384,6 +389,8 @@
     <Content Include="config\uSync8.config" />
     <Content Include="App_Plugins\uSync8\package.manifest" />
     <Content Include="App_Plugins\uSync8\addons.json" />
+    <Content Include="App_Plugins\MarkDownEditor\lib\Markdown.Editor.less" />
+    <None Include="App_Plugins\MarkDownEditor\package.manifest" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
@@ -394,7 +401,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\master.cshtml" />
-    <Content Include="Views\Home.cshtml" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
@@ -429,6 +435,17 @@
     <Content Include="scss\_navbar.scss" />
     <Content Include="scss\_post.scss" />
     <Content Include="scss\_variables.scss" />
+    <Content Include="Views\Partials\Navigation.cshtml" />
+    <Content Include="Views\Partials\Footer.cshtml" />
+    <Content Include="Views\home.cshtml" />
+    <Content Include="Views\Partials\LatestArticles.cshtml" />
+    <Content Include="Views\article.cshtml" />
+    <Content Include="Views\articleList.cshtml" />
+    <Content Include="Views\content.cshtml" />
+    <Content Include="Views\search.cshtml" />
+    <Content Include="Views\contact.cshtml" />
+    <Content Include="Views\Partials\PageHeader.cshtml" />
+    <Content Include="Views\Partials\Grid\Clean.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -440,10 +457,17 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UmbracoEssential.Core\UmbracoEssential.Core.csproj">
+      <Project>{9fafb936-5d85-4d8f-89a6-3648513b0253}</Project>
+      <Name>UmbracoEssential.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
