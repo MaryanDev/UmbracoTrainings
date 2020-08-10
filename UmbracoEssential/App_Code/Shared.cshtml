@@ -1,0 +1,11 @@
+﻿@helper GetArticleMeta(string authorName, DateTime articleDate)
+{
+    <span>
+        Posted
+        @if (!string.IsNullOrWhiteSpace(authorName))
+        {
+           @(new HtmlString("by ")) @authorName
+        }
+        on @articleDate.ToString("MMMM dd, yyyy")
+    </span>
+} 

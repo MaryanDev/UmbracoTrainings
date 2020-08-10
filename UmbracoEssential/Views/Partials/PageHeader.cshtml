@@ -37,12 +37,7 @@
                     @if (hasAuthorDetails)
                     {
                         <span class="meta">
-                            Posted
-                            @if (!string.IsNullOrWhiteSpace(authorName))
-                            {
-                               @Html.Raw("by ")  @authorName;
-                            }
-                            on @articleDate.ToString("MMM dd, yyyy")
+                            @Shared.GetArticleMeta(authorName, articleDate)
                         </span>
                     }
                 </div>

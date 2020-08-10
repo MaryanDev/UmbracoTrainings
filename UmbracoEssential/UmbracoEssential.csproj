@@ -366,7 +366,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Data\Models\models.generated.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -390,6 +389,7 @@
     <Content Include="App_Plugins\uSync8\package.manifest" />
     <Content Include="App_Plugins\uSync8\addons.json" />
     <Content Include="App_Plugins\MarkDownEditor\lib\Markdown.Editor.less" />
+    <Content Include="App_Code\Shared.cshtml" />
     <None Include="App_Plugins\MarkDownEditor\package.manifest" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -446,6 +446,8 @@
     <Content Include="Views\contact.cshtml" />
     <Content Include="Views\Partials\PageHeader.cshtml" />
     <Content Include="Views\Partials\Grid\Clean.cshtml" />
+    <Content Include="Views\error.cshtml" />
+    <Content Include="Views\xMLSitemap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -454,6 +456,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
