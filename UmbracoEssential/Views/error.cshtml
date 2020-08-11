@@ -1,4 +1,5 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using UmbracoEssential.Core.Extensions
 @{
     Layout = "master.cshtml";
 }
@@ -7,11 +8,5 @@
 @Html.Partial("PageHeader")
 <!-- Post Content -->
 <article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <p>Page Not Found</p>
-            </div>
-        </div>
-    </div>
+    @Html.GetGridHtml(Model, "mainContent", "Clean", true)
 </article>

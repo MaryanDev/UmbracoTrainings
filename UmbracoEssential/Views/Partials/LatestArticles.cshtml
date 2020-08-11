@@ -1,4 +1,5 @@
 ﻿@inherits UmbracoViewPage
+    @using UmbracoEssential.Core.Helpers
 
 @{
     var articleList = Model.Root().Descendants<ArticleList>().FirstOrDefault();
@@ -6,6 +7,14 @@
 
     var isArticleListPage = articleList.Id == Model.Id;
     var fallbackPageSize = isArticleListPage ? 10 : 3;
+
+    var pageNumber = QueryStringHelper.GetNumberFromQueryStr(Request, "page", 1);
+    var pageSize = QueryStringHelper.GetNumberFromQueryStr(Request, "size", fallbackPageSize);
+
+    var pageOfArticles = articles.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+
+    var totalItemCount = articles.Count();
+    var pageCount = totalItemCount > 0 ? Math.Ceiling((double)totalItemCount / pageSize) : 1;
 }
 
 @if (articles != null && articles.Any())
@@ -13,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                @foreach (var article in articles)
+                @foreach (var article in pageOfArticles)
                 {
                     <div class="post-preview">
                         <a href="@article.Url">
@@ -34,8 +43,46 @@
                     <hr>
                 }
                 <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="@articleList.Url">Older Posts &rarr;</a>
+                <div id="pageing" class="clearfix">
+                    @if (isArticleListPage)
+                    {
+                        if (pageCount > 1)
+                        {
+                            <div class="paging-block">
+                                @if (pageNumber > 1)
+                                {
+                                    <a class="btn btn-primary float-left" href="@($"{articleList.Url}?page={pageNumber - 1}$size={pageSize}")">
+                                        Prev
+                                    </a>
+                                }
+                                else
+                                {
+                                    @Html.Raw("&nbsp;")
+                                }
+                            </div>
+                            <div class="paging-block text-center">
+                                <span>Page @pageNumber of @pageCount </span>
+                            </div>
+                            <div class="paging-block">
+                                @if(pageNumber < pageCount)
+                                {
+                                    <a class="btn btn-primary float-lg-right" href="@($"{articleList.Url}?page={pageNumber + 1}&size={pageSize}")">
+                                        Next
+                                    </a>
+                                }
+                                else
+                                {
+                                    @Html.Raw("&nbsp;")
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <a class="btn btn-primary float-right" href="@(articleList.Url)">
+                            View All
+                        </a>
+                    }
                 </div>
             </div>
         </div>
