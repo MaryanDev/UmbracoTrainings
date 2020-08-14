@@ -8,7 +8,7 @@
     string imageUrl = "";
     if (image != null)
     {
-        imageUrl = image.Url;
+        imageUrl = image.GetCropUrl("PageHeader.Large");
     }
 
     var authorName = Model.HasProperty("authorName") && Model.HasValue("authorName") ? Model.Value<string>("authorName") : "";
