@@ -1,16 +1,21 @@
-﻿var contactForm = contactForm || {
-    init: function () {
+﻿
+class ContactForm {
+    init () {
         this.listeners();
-    },
-    listeners: function () {
-        $(document).on("click", ".contact-submit", function (e) {
+    }
+
+    listeners() {
+        $(document).on("click", ".contact-submit", (e) => {
             e.preventDefault();
-            var form = $("#contact-form");
+            const form = $("#contact-form");
             form.submit();
-        })
-    },
-    showResult: function () {
+        });
+    }
+
+    showResult() {
         $("#form-outer").hide("slow");
         $("#form-result").show("slow");
     }
 }
+
+const contactForm = new ContactForm();

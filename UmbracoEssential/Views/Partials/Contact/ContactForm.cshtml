@@ -6,8 +6,8 @@
         UpdateTargetId = "form-result",
         HttpMethod = "POST",
         InsertionMode = InsertionMode.Replace,
-        OnSuccess = "contactForm.showResult",
-        OnFailure = "contactForm.showResult"
+        OnSuccess = "contactForm.showResult()",
+        OnFailure = "contactForm.showResult()"
     }, new { id = "contact-form" }))
     {
         @Html.HiddenFor(m => m.ContactFormId)

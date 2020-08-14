@@ -6,4 +6,10 @@
 
 <!-- Page Header -->
 @Html.Partial("PageHeader")
-@Html.Partial("LatestArticles")
+@Html.CachedPartial("LatestArticles", Model, 3600, true)
+
+@section Scripts {
+    <script type="text/javascript">
+        const leave = new LeaveTab("@Model.Value("leaveTabMessage")");
+    </script>
+} 

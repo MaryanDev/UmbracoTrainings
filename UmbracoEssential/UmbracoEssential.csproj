@@ -1,7 +1,7 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="packages\uSync.8.6.5\build\uSync.props" Condition="Exists('packages\uSync.8.6.5\build\uSync.props')" />
   <Import Project="packages\UmbracoCms.8.6.3\build\UmbracoCms.props" Condition="Exists('packages\UmbracoCms.8.6.3\build\UmbracoCms.props')" />
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -99,6 +99,9 @@
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.4.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -128,7 +131,7 @@
       <HintPath>packages\MiniProfiler.Shared.4.0.138\lib\net461\MiniProfiler.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPoco, Version=3.9.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\NPoco.3.9.4\lib\net45\NPoco.dll</HintPath>
@@ -241,7 +244,13 @@
       <HintPath>packages\UmbracoCms.Web.8.6.3\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="uSync8.BackOffice, Version=8.6.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\uSync.8.6.5\lib\net472\uSync8.BackOffice.dll</HintPath>
+      <HintPath>packages\uSync.BackOffice.Core.8.6.5\lib\net472\uSync8.BackOffice.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.Community.Contrib, Version=8.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.Community.Contrib.8.6.5\lib\net472\uSync8.Community.Contrib.dll</HintPath>
+    </Reference>
+    <Reference Include="uSync8.ContentEdition, Version=8.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\uSync.ContentEdition.8.6.5.1\lib\net472\uSync8.ContentEdition.dll</HintPath>
     </Reference>
     <Reference Include="uSync8.Core, Version=8.6.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\uSync.Core.8.6.5\lib\net472\uSync8.Core.dll</HintPath>
@@ -268,9 +277,6 @@
     </Reference>
     <Reference Include="System.Web.Mvc">
       <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +353,7 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\leaveTab.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -381,7 +388,28 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Data\Models\*.generated.cs" />
+    <Compile Include="App_Data\Models\Article.generated.cs" />
+    <Compile Include="App_Data\Models\ArticleControls.generated.cs" />
+    <Compile Include="App_Data\Models\ArticleList.generated.cs" />
+    <Compile Include="App_Data\Models\Contact.generated.cs" />
+    <Compile Include="App_Data\Models\ContactFormControls.generated.cs" />
+    <Compile Include="App_Data\Models\Content.generated.cs" />
+    <Compile Include="App_Data\Models\ContentControls.generated.cs" />
+    <Compile Include="App_Data\Models\Error.generated.cs" />
+    <Compile Include="App_Data\Models\File.generated.cs" />
+    <Compile Include="App_Data\Models\Folder.generated.cs" />
+    <Compile Include="App_Data\Models\FooterControls.generated.cs" />
+    <Compile Include="App_Data\Models\HeaderControls.generated.cs" />
+    <Compile Include="App_Data\Models\Home.generated.cs" />
+    <Compile Include="App_Data\Models\IconLinkItem.generated.cs" />
+    <Compile Include="App_Data\Models\Image.generated.cs" />
+    <Compile Include="App_Data\Models\LeaveTabControls.generated.cs" />
+    <Compile Include="App_Data\Models\MainImageControls.generated.cs" />
+    <Compile Include="App_Data\Models\Member.generated.cs" />
+    <Compile Include="App_Data\Models\Search.generated.cs" />
+    <Compile Include="App_Data\Models\SEocontrols.generated.cs" />
+    <Compile Include="App_Data\Models\VisibilityControls.generated.cs" />
+    <Compile Include="App_Data\Models\XMlsitemap.generated.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -513,12 +541,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
     <Error Condition="!Exists('packages\UmbracoCms.8.6.3\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.8.6.3\build\UmbracoCms.props'))" />
     <Error Condition="!Exists('packages\UmbracoCms.8.6.3\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\UmbracoCms.8.6.3\build\UmbracoCms.targets'))" />
     <Error Condition="!Exists('packages\uSync.8.6.5\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uSync.8.6.5\build\uSync.props'))" />
     <Error Condition="!Exists('packages\uSync.8.6.5\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\uSync.8.6.5\build\uSync.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
   <Import Project="packages\UmbracoCms.8.6.3\build\UmbracoCms.targets" Condition="Exists('packages\UmbracoCms.8.6.3\build\UmbracoCms.targets')" />
